@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import InputField from "@/components/InputField/InputField";
@@ -16,6 +17,15 @@ export default function LoginPage() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  // Redirect if the required cookie is not present
+  useEffect(() => {
+    const fromSendCode = Cookies.get("fromResetCode");
+    if (!fromSendCode) {
+      toast.error("Unauthorized access. Please complete the previous steps.");
+      router.push("/auth/verifyCode"); // Redirect to the appropriate page
+    }
+  }, [router]);
 
   const initialValues = {
     password: "",

@@ -41,6 +41,7 @@ export default function LoginPage() {
 
       if (req?.data) {
         Cookies.set("email", values.username, { expires: 1 }); // Cookie expires in 7 days
+        Cookies.set("fromChangePassword", "true", { expires: 1 }); // Cookie expires in 7 days
         router.push("/auth/verifyCode");
       }
     } catch (err: any) {

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <header>
+    <div>
       <ul className="flex gap-10 justify-center py-5">
         <li>
           <Link href="client">Client</Link>
@@ -14,6 +14,6 @@ export default function Home() {
           <Link href="dashboard">Dashboard</Link>
         </li>
       </ul>
-    </header>
+    </div>
   );
 }

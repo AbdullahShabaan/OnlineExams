@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import InputField from "@/components/InputField/InputField";
@@ -12,6 +12,15 @@ import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
+
+  useEffect(() => {
+    const fromChangePassword = Cookies.get("fromChangePassword");
+
+    if (fromChangePassword !== "true") {
+      router.replace("/auth/forgetPassword"); // Redirect to Change Password
+    }
+  }, [router]);
+
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const reSendCode = async () => {
@@ -62,6 +71,7 @@ export default function LoginPage() {
       console.log(req);
 
       if (req?.data) {
+        Cookies.set("fromResetCode", "true");
         router.push("/auth/changePassword");
       }
     } catch (err: any) {
