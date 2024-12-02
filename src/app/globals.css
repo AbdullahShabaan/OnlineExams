@@ -1,21 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Shadows */
+.defaultShadow {
+  box-shadow: 0px 5px 100px 0px rgba(0, 0, 0, 0.1);
+}
+.inputShadow {
+  box-shadow: 0px 10px 20px 0px rgba(68, 97, 242, 0.05);
+}
+.iconShadow {
+  box-shadow: 0px 18.45px 30.75px 0px rgba(68, 97, 242, 0.11);
+}
+/* Shadows */
+
+.interFont {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: rgba(161, 164, 169, 1);
 }
